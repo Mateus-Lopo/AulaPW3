@@ -1,0 +1,41 @@
+@model IEnumerable<AulaPW3.Models.usuario>
+
+@{
+    ViewBag.Title = "Lista de Usuarios";
+}
+
+<h2>Lista de Usuarios</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo Usuario", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.id }, new { @class = "btn btn-sm btn-outline-secondary" }) |
+                @Html.ActionLink("Detalhes", "Details", new { id=item.id }, new { @class = "btn btn-sm btn-outline-info" }) |
+                @Html.ActionLink("Excluir", "Delete", new { id=item.id }, new { @class = "btn btn-sm btn-outline-danger" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
